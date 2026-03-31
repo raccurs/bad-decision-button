@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>bad decision button</title>
+  <style>
+    body {
+      text-align: center;
+      background: black;
+      color: white;
+    }
+    img {
+      max-width: 90%;
+      margin-top: 20px;
+      border-radius: 10px;
+    }
+    button {
+      margin-top: 20px;
+      padding: 10px 20px;
+      font-size: 18px;
+    }
+  </style>
+</head>
+<body>
+
+<h2>bad decision button</h2>
+
+<img id="image" src="">
+
+<br>
+<button onclick="randomImage()">make a bad decision</button>
+
+<script>
+const images = [
+  "images/1.jpg",
+  "images/2.jpg",
+  "images/3.jpg"
+];
+
+function randomImage() {
+  const index = Math.floor(Math.random() * images.length);
+  document.getElementById("image").src = images[index];
+}
+
+window.onload = randomImage;
+</script>
+
+</body>
+</html>
