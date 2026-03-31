@@ -31,19 +31,26 @@
 <button onclick="randomImage()">make a bad decision</button>
 
 <script>
-const images = [
-  "images/1.jpg",
-  "images/2.jpg",
-  "images/3.jpg"
-];
+let images = [];
+
+fetch('images.json')
+  .then(response => response.json())
+  .then(data => {
+    images = data;
+    randomImage(); // ✅ 等数据回来再执行
+  })
+  .catch(err => console.error("加载失败:", err));
 
 function randomImage() {
+  if (images.length === 0) {
+    console.log("图片还没加载好");
+    return;
+  }
   const index = Math.floor(Math.random() * images.length);
   document.getElementById("image").src = images[index];
 }
-
-window.onload = randomImage;
 </script>
+
 
 </body>
 </html>
